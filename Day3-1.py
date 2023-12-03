@@ -41,7 +41,7 @@ while continuestate:
                     currentnumber = ""
                 includenumber = False
             onnumber = False
-        else: # if currentline[i] is-symbol
+        elif currentline[i] != "\n": # if currentline[i] is-symbol
             includenumber = True
             if onnumber:
                 addnumber = True
@@ -49,16 +49,13 @@ while continuestate:
         if addnumber:
             print(currentnumber, end=", ")
             total = total + int(currentnumber)
+            #print("(", total, "), ", sep="", end="")
             currentnumber = ""
             addnumber = False
-    currentnumber = ""
-    onnumber = False
-    includenumber = False
-    addnumber = False
     lastline = currentline
     currentline = nextline
     nextline = engine.readline()
-    print("(", total, ")", sep="")
+    print("[", total, "]", sep="")
 
 engine.close()
 print(total)
